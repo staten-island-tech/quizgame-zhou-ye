@@ -3,16 +3,9 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "dependencies": {
-    "parcel": "^2.0.0-nightly.625"
-  },
-  "devDependencies": {
-    "parcel-bundler": "^1.12.4",
-    "sass": "^1.32.8"
-  },
   "scripts": {
-    "start": "parcel serve ./src/index.html",
-    "build-prod": "parcel build ./src/index.html"
+    "start": "parcel serve src/index.html",
+    "build-prod": "parcel build src/index.html"
   },
   "repository": {
     "type": "git",
@@ -24,5 +17,9 @@
   "bugs": {
     "url": "https://github.com/staten-island-tech/quizgame-zhou-ye/issues"
   },
-  "homepage": "https://github.com/staten-island-tech/quizgame-zhou-ye#readme"
+  "homepage": "https://github.com/staten-island-tech/quizgame-zhou-ye#readme",
+  "devDependencies": {
+    "@parcel/transformer-sass": "^2.0.0-nightly.627",
+    "parcel": "^2.0.0-nightly.625"
+  }
 }
