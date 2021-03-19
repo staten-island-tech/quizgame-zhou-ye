@@ -33,7 +33,7 @@ Quiz.prototype.hasEnded = function () {
 };
 
 // QUIZ UI
-var QuizUI = {
+const QuizUI = {
   displayNext: function () {
     if (quiz.hasEnded()) {
       this.showResults();
@@ -48,35 +48,35 @@ var QuizUI = {
     this.populateIdWithHTML("question", quiz.getCurrentQuestion().text);
   },
   displayChoices: function () {
-    var choices = quiz.getCurrentQuestion().choices;
+    let choices = quiz.getCurrentQuestion().choices;
     // Loop through each choice and display on page
     for (var i = 0; i < choices.length; i++) {
-      var choiceId = "choice" + i;
-      var choiceText = choices[i];
+      let choiceId = "choice" + i;
+      let choiceText = choices[i];
       this.populateIdWithHTML(choiceId, choiceText);
       this.checkAnswerHandler(choiceId, choiceText);
     }
   },
   checkAnswerHandler: function (id, guess) {
-    var button = document.getElementById(id);
+    const button = document.getElementById(id);
     button.onclick = function () {
       quiz.checkAnswer(guess);
       QuizUI.displayNext();
     };
   },
   displayScore: function () {
-    var scoreText = "Score: " + quiz.score;
+    const scoreText = "Score: " + quiz.score;
     this.populateIdWithHTML("score", scoreText);
   },
   displayProgress: function () {
-    var questionNumber = quiz.currentQuestionIndex + 1;
-    var totalQuestions = quiz.questions.length;
-    var progressText = "Question " + questionNumber + " of " + totalQuestions;
+    const questionNumber = quiz.currentQuestionIndex + 1;
+    const totalQuestions = quiz.questions.length;
+    const progressText = "Question " + questionNumber + " of " + totalQuestions;
     this.populateIdWithHTML("progress", progressText);
   },
   showResults: function () {
-    var grade = quiz.score / quiz.questions.length;
-    var results = "<h2>";
+    const grade = quiz.score / quiz.questions.length;
+    let results = "<h2>";
     if (grade >= 0.8) {
       results += "Excellent!";
     } else if (grade < 0.8 && grade > 0.5) {
@@ -90,14 +90,14 @@ var QuizUI = {
     this.resetQuizHandler();
   },
   resetQuizHandler: function () {
-    var resetBtn = document.getElementById("reset");
+    const resetBtn = document.getElementById("reset");
     // Reload quiz to start from beginning
     resetBtn.onclick = function () {
       window.location.reload(false);
     };
   },
   populateIdWithHTML: function (id, content) {
-    var element = document.getElementById(id);
+    const element = document.getElementById(id);
     element.innerHTML = content;
   },
 };
@@ -109,7 +109,7 @@ var QuizUI = {
 //}
 
 // CREATE QUESTIONS
-var questions = [
+const questions = [
   new Question(
     "Which state is Chicago in?",
     ["Iowa", "Illinois", "Indiana"],
@@ -127,5 +127,5 @@ var questions = [
   ),
 ];
 // CREATE QUIZ & DISPLAY FIRST QUESTION
-var quiz = new Quiz(questions);
+const quiz = new Quiz(questions);
 QuizUI.displayNext();
