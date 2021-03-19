@@ -78,11 +78,11 @@ const QuizUI = {
     const grade = quiz.score / quiz.questions.length;
     let results = "<h2>";
     if (grade >= 0.8) {
-      results += "Excellent!";
+      results += "You're a real Seagull - Cawcaw!";
     } else if (grade < 0.8 && grade > 0.5) {
-      results += "Not Bad...";
+      results += "You are half-seagull";
     } else {
-      results += "Terrible!";
+      results += "Incompetent smh";
     }
     results += "</h2><h3>Your final score is: " + quiz.score + "</h3>";
     results += '<button id="reset">Try Again?</button>';
@@ -111,19 +111,33 @@ const QuizUI = {
 // CREATE QUESTIONS
 const questions = [
   new Question(
-    "Which state is Chicago in?",
-    ["Iowa", "Illinois", "Indiana"],
-    "Illinois"
+    "Which girls sports team is the most iconic?",
+    ["Bowling", "Track", "Golf"],
+    "Bowling"
   ),
   new Question(
-    "How many states are in the United States?",
-    ["48", "49", "50"],
-    "50"
+    "Which one of the following bald teachers has a middle name that starts with 'I' ?",
+    ["Whalen", "Henriques", "Frusci"],
+    "Henriques"
   ),
   new Question(
-    "Who was the first president of the United States?",
-    ["George Washington", "Abraham Lincoln", "Andrew Jackson"],
-    "George Washington"
+    "The last dean at Tech was also the _____",
+    [
+      "Coach of the girl's bowling team",
+      "Coach of the boy's handball team",
+      "Andrew Jackson",
+    ],
+    "Coach of the girl's bowling team"
+  ),
+  new Question(
+    "Where is the best boba near Tech?",
+    ["Vivi's", "Something Sweet", "Staten Island doesn't have good boba"],
+    "Staten Island doesn't have good boba"
+  ),
+  new Question(
+    "Why are Tech kids always stressed?",
+    ["Grades", "Workload", "Relationship drama"],
+    "Grades"
   ),
 ];
 // CREATE QUIZ & DISPLAY FIRST QUESTION
