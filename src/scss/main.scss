@@ -1,72 +1,59 @@
 body {
-    display:flex;
-   font-family:'Fira Sans Extra Condensed', sans-serif;
-    text-align:center;
-  }
-  
-  .quiz {
-    font-size:24px;
-    border-style:solid;
-    border-width:2px;
-    margin-top:25px;
-    box-shadow: 10px 5px 10px black;
-  }
-  
-  .questions {
-    text-align:left;
-    margin-bottom:25px;
-    margin-left:50px;
-    margin-right:50px;
-    margin-top:25px;
-  }
-  
-  .row-centered {
-      text-align:center;
-  }
-  
-  .col-centered {
-      display:inline-block;
-      float:none;
-  }
-  
-  .choices {
-    text-align:left;
-  }
-  
-  .question {
-    font-size:24px;
-    margin-bottom:10px;
-    margin-top:10px;
-  
-  }
-  
-  .answers {
-    font-size:24px;
-    margin-bottom:25px;
-    margin-top:25px;
-  }
-  
-  .hidden {
-    display:none;
-  }
-  
-  .buttons {
-    text-align:center;
-    margin-bottom:20px;
-  }
-  
-  #radio label {
-    color: #333;
-  }
-  
-  #radio label:hover {
-    color: #F76F1E;
-  }
-  
-  #radio input:checked {
-    color: #F76F1E;
-  }
-  
-  .alert-warning {
-     text-align:center;
-  }
+  background-color: #0097b2;
+  font-family: "Open Sans", sans-serif;
+  font-size: 1em;
+  text-align: center;
+}
+h1 {
+  color: #fff;
+  font-size: 1.7rem;
+  font-weight: bold;
+  margin: 30px 0;
+  text-transform: uppercase;
+}
+h2 {
+  color: #666;
+}
+h3 {
+  font-size: 1.3rem;
+  font-style: italic;
+}
+button {
+  background-color: tomato;
+  border: none;
+  border-radius: 30px;
+  box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.4), 0 0 2px 1px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  color: #fff;
+  font-size: 1rem;
+  padding: 15px 30px;
+  margin: 10px 5px 30px;
+  transition: all 0.1s ease-in;
+}
+button:hover {
+  /*background-color: red;*/
+  box-shadow: 0 6px 6px 0 rgba(0, 0, 0, 0.25), 0 0 4px 2px rgba(0, 0, 0, 0.05);
+  transform: translateY(-2px);
+}
+button:focus {
+  outline: 0;
+}
+footer {
+  border-top: 1px solid #ccc;
+  font-size: 0.9rem;
+  margin: 20px 0 30px;
+}
+#quiz {
+  background-color: #fff;
+  box-shadow: 0 3px 2px 1px rgba(0, 0, 0, 0.2), 0 0 6px 3px rgba(0, 0, 0, 0.05);
+  margin: 0 auto 30px;
+  padding: 20px;
+  width: 66%;
+}
+#progress {
+  float: left;
+}
+#score {
+  float: right;
+  font-weight: bold;
+}

@@ -1,120 +1,131 @@
-const allQuestions = [
-  {
-    Question: "What is Tims Name?",
-    Choices: ["Tim", "Tony", "Travis"],
-    correctAnswer: "Tim",
+// QUESTION CONSTRUCTOR
+function Question(text, choices, answer) {
+  this.text = text; // string
+  this.choices = choices; // array
+  this.answer = answer; // string
+}
+Question.prototype.isCorrect = function (choice) {
+  // Return TRUE if choice matches correct answer
+  return this.answer === choice;
+};
+
+// QUIZ CONSTRUCTOR
+function Quiz(questions) {
+  // Array of questions
+  this.questions = questions;
+  // Track which question you're on, starting with the first question
+  this.currentQuestionIndex = 0;
+  this.score = 0; // Score keeper
+}
+Quiz.prototype.getCurrentQuestion = function () {
+  return this.questions[this.currentQuestionIndex];
+};
+Quiz.prototype.checkAnswer = function (answer) {
+  if (this.getCurrentQuestion().isCorrect(answer)) {
+    this.score++; // Add 1 point if correct
+  }
+  this.currentQuestionIndex++; // Get ready for next question
+};
+// Check if quiz end is reached
+Quiz.prototype.hasEnded = function () {
+  // Return TRUE only after last question
+  return this.currentQuestionIndex >= this.questions.length;
+};
+
+// QUIZ UI
+var QuizUI = {
+  displayNext: function () {
+    if (quiz.hasEnded()) {
+      this.showResults();
+    } else {
+      this.displayQuestion();
+      this.displayChoices();
+      this.displayProgress();
+      this.displayScore();
+    }
   },
-  {
-    Question: "Where is Tim From?",
-    Choices: ["Austin", "Manassas", "DC"],
-    correctAnswer: "Manassas",
+  displayQuestion: function () {
+    this.populateIdWithHTML("question", quiz.getCurrentQuestion().text);
   },
-  {
-    Question: "What is Moo Moo's name?",
-    Choices: ["Moo", "Moo Moo", "Katharine"],
-    correctAnswer: "Moo Moo",
+  displayChoices: function () {
+    var choices = quiz.getCurrentQuestion().choices;
+    // Loop through each choice and display on page
+    for (var i = 0; i < choices.length; i++) {
+      var choiceId = "choice" + i;
+      var choiceText = choices[i];
+      this.populateIdWithHTML(choiceId, choiceText);
+      this.checkAnswerHandler(choiceId, choiceText);
+    }
   },
+  checkAnswerHandler: function (id, guess) {
+    var button = document.getElementById(id);
+    button.onclick = function () {
+      quiz.checkAnswer(guess);
+      QuizUI.displayNext();
+    };
+  },
+  displayScore: function () {
+    var scoreText = "Score: " + quiz.score;
+    this.populateIdWithHTML("score", scoreText);
+  },
+  displayProgress: function () {
+    var questionNumber = quiz.currentQuestionIndex + 1;
+    var totalQuestions = quiz.questions.length;
+    var progressText = "Question " + questionNumber + " of " + totalQuestions;
+    this.populateIdWithHTML("progress", progressText);
+  },
+  showResults: function () {
+    var grade = quiz.score / quiz.questions.length;
+    var results = "<h2>";
+    if (grade >= 0.8) {
+      results += "Excellent!";
+    } else if (grade < 0.8 && grade > 0.5) {
+      results += "Not Bad...";
+    } else {
+      results += "Terrible!";
+    }
+    results += "</h2><h3>Your final score is: " + quiz.score + "</h3>";
+    results += '<button id="reset">Try Again?</button>';
+    this.populateIdWithHTML("quiz", results);
+    this.resetQuizHandler();
+  },
+  resetQuizHandler: function () {
+    var resetBtn = document.getElementById("reset");
+    // Reload quiz to start from beginning
+    resetBtn.onclick = function () {
+      window.location.reload(false);
+    };
+  },
+  populateIdWithHTML: function (id, content) {
+    var element = document.getElementById(id);
+    element.innerHTML = content;
+  },
+};
+
+// Hover effect - move button down
+//var hoverBtn = document.getElementByTagName('button');
+//hoverBtn.onmouseover = function() {
+//	this.style['margin-top'] = '25px';
+//}
+
+// CREATE QUESTIONS
+var questions = [
+  new Question(
+    "Which state is Chicago in?",
+    ["Iowa", "Illinois", "Indiana"],
+    "Illinois"
+  ),
+  new Question(
+    "How many states are in the United States?",
+    ["48", "49", "50"],
+    "50"
+  ),
+  new Question(
+    "Who was the first president of the United States?",
+    ["George Washington", "Abraham Lincoln", "Andrew Jackson"],
+    "George Washington"
+  ),
 ];
-// everything is based on counter. Same button for everything.
-//get quiz Question gets the question then adds the userData
-//
-
-// 1 button to start quiz
-// 2 button to set quiz data
-
-var userScore = [];
-var count = 0;
-var answer = allQuestions[count].Answer;
-
-$(document).ready(function () {
-  nextQuestion(); // run next Question
-
-  $("#prev").on("click", function () {
-    storeChoice();
-    count--;
-    nextQuestion();
-    if (count === 0) {
-      $("#prev").addClass("hidden");
-    }
-  });
-
-  $("#next").on("click", function () {
-    if ($("input:checked").val() === undefined) {
-      $(".alert-warning").removeClass("hidden");
-    } else {
-      $(".alert-warning").addClass("hidden");
-      storeChoice();
-      if (count < allQuestions.length - 1) {
-        count++;
-
-        nextQuestion();
-        if (count > 0) {
-          $("#prev").removeClass("hidden");
-        }
-      } else {
-        displayScore();
-      }
-    }
-  });
-});
-
-function storeChoice() {
-  // must be redone for back button
-  if ($("input:checked").val() === undefined) {
-    return;
-  } else {
-    userScore[count] = $("input:checked").val();
-  }
-}
-
-// does not MODIFY COUNT!! //
-function nextQuestion() {
-  var question = allQuestions[count].Question;
-  var choices = allQuestions[count].Choices;
-
-  // variable to pass into fade below
-  var a = choices.map(function (val) {
-    return `<input type="radio" name="choice" id="radio" value="${val}"><label for="radio">${val}</label><br>`;
-  });
-
-  // fade out old form inputs fade in new
-  $(".form-group").fadeOut(500, function () {
-    $(this).html(a).fadeIn(200);
-  });
-  // fade out old form inputs fade in new
-  $(".question").fadeOut(500, function () {
-    $(this).text(question).fadeIn(200);
-  });
-
-  // retrieve previously checked item for navigation
-  $("input[value=" + userScore[count] + "]").prop("checked", true);
-}
-
-// does not modify count!!
-function displayScore() {
-  $(".question").text("Your quiz results are below");
-  $("#next").addClass("hidden");
-  $("#prev").addClass("hidden");
-  $("#start").removeClass("hidden");
-  $(".form-group").html("");
-
-  for (i = 0; i < userScore.length; i++) {
-    const correct = allQuestions[i].correctAnswer;
-    const choice = userScore[i];
-
-    if (correct === choice) {
-      $(".results").append(`<p value="Answer${i}">${choice}: Correct!</p>`);
-    } else {
-      $(".results").append(`<p value="Answer${i}">${choice}: False!</p>`);
-    }
-  }
-}
-
-$("#start").on("click", function () {
-  userScore = [];
-  count = 0;
-  $(this).addClass("hidden");
-  $("#next").removeClass("hidden");
-  $(".results").html("");
-  nextQuestion();
-});
+// CREATE QUIZ & DISPLAY FIRST QUESTION
+var quiz = new Quiz(questions);
+QuizUI.displayNext();
