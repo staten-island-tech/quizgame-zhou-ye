@@ -112,31 +112,45 @@ const QuizUI = {
 const questions = [
   new Question(
     "Which girls sports team is the most iconic?",
-    ["Bowling", "Track", "Golf"],
+    ["Bowling", "Track", "Golf", "Fencing", "All of the above"],
     "Bowling"
   ),
   new Question(
-    "Which one of the following bald teachers has a middle name that starts with 'I' ?",
-    ["Whalen", "Henriques", "Frusci"],
+    "Which one of the following teachers has a middle name that starts with 'I' ?",
+    ["Whalen", "Henriques", "Frusci", "Jax", "Buro"],
     "Henriques"
   ),
   new Question(
-    "The last dean at Tech was also the _____",
+    "The last dean at Tech was also _____",
     [
       "Coach of the girl's bowling team",
       "Coach of the boy's handball team",
       "Andrew Jackson",
+      "A history teacher",
+      "A black belt in jiu-jitsu",
     ],
     "Coach of the girl's bowling team"
   ),
   new Question(
     "Where is the best boba near Tech?",
-    ["Vivi's", "Something Sweet", "Staten Island doesn't have good boba"],
+    [
+      "Vivi's",
+      "Something Sweet",
+      "7/11",
+      "Applebee's",
+      "Staten Island doesn't have good boba",
+    ],
     "Staten Island doesn't have good boba"
   ),
   new Question(
-    "Why are Tech kids always stressed?",
-    ["Grades", "Workload", "Relationship drama"],
+    "Why are Tech Seniors always sad?",
+    [
+      "Grades",
+      "Workload",
+      "Relationship drama",
+      "The impending doom of college",
+      "COVID",
+    ],
     "Grades"
   ),
 ];
