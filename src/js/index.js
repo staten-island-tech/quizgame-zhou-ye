@@ -94,7 +94,7 @@ const QuizGame = {
     const resetBtn = document.getElementById("reset");
     // reload quiz to start from beginning
     resetBtn.onclick = function () {
-      window.location.reload(false);
+      window.location.reload();
     }; // when reset button is clicked on, the window reloads (refresh button)
   },
   populateIdWithHTML: function (id, content) {
@@ -146,13 +146,13 @@ const questions = [
   new Question(
     "Why are Tech Seniors always sad?",
     [
-      "Grades",
-      "Workload",
+      "Grades/Workload",
+      "COVID",
       "Relationship drama",
       "The impending doom of college",
-      "COVID",
+      "All of the Above",
     ],
-    "Grades"
+    "All of the Above"
   ),
 ];
 
