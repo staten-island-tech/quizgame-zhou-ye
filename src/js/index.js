@@ -22,7 +22,7 @@ Quiz.prototype.getCurrentQuestion = function () {
 };
 Quiz.prototype.checkAnswer = function (answer) {
   if (this.getCurrentQuestion().isCorrect(answer)) {
-    this.score++; // ++ -> adds 1 point if correct
+    this.score++; // ++ -> adds 1 point if selected choice is correct
   }
   this.currentQuestionIndex++; // get ready for next question
 };
