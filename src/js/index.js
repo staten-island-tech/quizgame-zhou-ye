@@ -1,15 +1,15 @@
-// QUESTION CONSTRUCTOR
+// QUESTION CONSTRUCTOR (defining the question constructor function)
 function Question(text, choices, answer) {
   this.text = text; // "string"
   this.choices = choices; // [array]
   this.answer = answer; // "string"
-}
+} //defining a constructor function
 Question.prototype.isCorrect = function (choice) {
   // returns TRUE if the choice matches the correct answer
   return this.answer === choice;
 };
 
-// MAKE QUESTIONS
+// MAKE QUESTIONS (creating 5 object instances)
 const questions = [
   new Question(
     "Which girls sports team is the most iconic?",
@@ -56,7 +56,7 @@ const questions = [
   ),
 ];
 
-// QUIZ CONSTRUCTOR
+// QUIZ CONSTRUCTOR (defining the quiz constructor function)
 function Quiz(questions) {
   // array of questions
   this.questions = questions;
@@ -81,20 +81,20 @@ Quiz.prototype.hasEnded = function () {
 
 // QUIZ GAME
 const QuizGame = {
-  displayNext: function () {
+  showNext: function () {
     if (quiz.hasEnded()) {
       this.showResults();
     } else {
-      this.displayQuestion();
-      this.displayChoices();
-      this.displayProgress();
-      this.displayScore();
+      this.showQuestion();
+      this.showChoices();
+      this.showProgress();
+      this.showScore();
     }
   }, // if the quiz has ended (question index >= length of questions), then show the results --> otherwise, continue displaying questions
-  displayQuestion: function () {
+  showQuestion: function () {
     this.populateIdWithHTML("question", quiz.getCurrentQuestion().text);
   }, //display question: uses text string (from question) to fill in the element with the id "question" in the html file
-  displayChoices: function () {
+  showChoices: function () {
     let choices = quiz.getCurrentQuestion().choices;
     // loop through each choice and display on page
     for (let i = 0; i < choices.length; i++) {
@@ -108,14 +108,14 @@ const QuizGame = {
     const button = document.getElementById(id);
     button.onclick = function () {
       quiz.checkAnswer(guess);
-      QuizGame.displayNext();
+      QuizGame.showNext();
     }; // (checks if answer is right) when user clicks -> gets the element with the id of a specific choice -> this is marked as the "guess" and runs through checkAnswer and adds a point if it's right -> displays next question
   },
-  displayScore: function () {
+  showScore: function () {
     const scoreText = "score: " + quiz.score;
     this.populateIdWithHTML("score", scoreText); //how BR appears on the game
   }, // (affects bottom right) score display changes whenever a right answer is chosen
-  displayProgress: function () {
+  showProgress: function () {
     const questionNumber = quiz.currentQuestionIndex + 1; //adds 1 everytime you move onto the next question
     const totalQuestions = quiz.questions.length; //always 5
     const progressText = "question " + questionNumber + " of " + totalQuestions; //how BL appears on the game
@@ -152,7 +152,7 @@ const QuizGame = {
 
 // CREATE QUIZ and DISPLAYS FIRST QUESTION
 const quiz = new Quiz(questions);
-QuizGame.displayNext();
+QuizGame.showNext();
 
 // Hover effect - move button down
 //let hoverBtn = document.getElementByTagName('button');
