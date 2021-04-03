@@ -1,9 +1,9 @@
-// QUESTION CONSTRUCTOR (defining the question constructor function)
+// DEFINING QUESTION CONSTRUCTOR FUNCTION
 function Question(text, choices, answer) {
   this.text = text; // "string"
   this.choices = choices; // [array]
   this.answer = answer; // "string"
-} //defining a constructor function
+}
 Question.prototype.isCorrect = function (choice) {
   // returns TRUE if the choice matches the correct answer
   return this.answer === choice;
@@ -56,7 +56,7 @@ const questions = [
   ),
 ];
 
-// QUIZ CONSTRUCTOR (defining the quiz constructor function)
+// DEFINING QUIZ CONSTRUCTOR FUNCTION
 function Quiz(questions) {
   // array of questions
   this.questions = questions;
