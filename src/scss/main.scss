@@ -4,10 +4,11 @@ body {
   font-family: "Open Sans", sans-serif;
   font-size: 1rem;
   text-align: center;
+  justify-content: center;
 }
 h1 {
   color: #c4b467;
-  font-size: 2rem;
+  font-size: 3rem;
   font-weight: bold;
   margin: 2.5rem 0;
   padding: 0;
@@ -15,40 +16,45 @@ h1 {
 }
 
 h3 {
-  font-size: 1.3rem;
-  font-style: italic;
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-transform: uppercase;
 }
 button {
   background-color: #c4b467;
   border: none;
-  border-radius: 30px;
-  box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.4), 0 0 2px 1px rgba(0, 0, 0, 0.1);
+  border-radius: 3rem;
+  box-shadow: 0 5px 5px 0 rgba(0, 0, 0, 0.4), 0 0 2px 1px rgba(0, 0, 0, 0.1);
   cursor: pointer;
   font-size: 1rem;
-  padding: 15px 30px;
-  margin: 10px 5px 30px;
+  padding: 1rem 2rem;
+  margin: 0.5rem 0.25rem 2rem;
   transition: all 0.1s ease-in;
 }
 button:hover {
+  transition: all 0.2s ease-in;
   box-shadow: 0 6px 6px 0 rgba(0, 0, 0, 0.25), 0 0 4px 2px rgba(0, 0, 0, 0.05);
-  transform: translateY(-2px);
+  transform: translateY(-3px);
+  background-color: #d4af37;
+  color: white;
 }
 button:focus {
   outline: 0;
 }
 footer {
-  border-top: 1px solid #fff;
-  font-size: 0.9rem;
-  margin: 20px 0 30px;
+  border-top: 3px solid #fff;
+  font-size: 1rem;
+  margin: 1.5rem 0 2rem;
 }
 #quiz {
-  box-shadow: 0 3px 2px 1px rgba(0, 0, 0, 0.2), 0 0 6px 3px rgba(0, 0, 0, 0.05);
-  margin: 0 auto 30px;
-  padding: 20px;
-  width: 66%;
+  box-shadow: 0 3px 2px 1px rgba(0, 0, 0, 0.3), 0 0 6px 3px rgba(0, 0, 0, 0.05);
+  margin: 0 auto 2rem;
+  padding: 1.5rem;
+  width: 65%;
 }
 #progress {
   float: left;
+  font-weight: bold;
 }
 #score {
   float: right;
