@@ -1,10 +1,13 @@
 // DEFINING QUESTION CONSTRUCTOR FUNCTION
 function Question(text, choices, answer) {
+  //property definitions
   this.text = text; // "string"
   this.choices = choices; // [array]
   this.answer = answer; // "string"
-}
-Question.prototype.isCorrect = function (choice) {
+} //this. is used for property and method definitions with constructor functions
+Question.prototype.isCorrect = function (
+  choice //first method definition
+) {
   return this.answer === choice;
 }; // returns true if the choice matches the correct answer
 
@@ -71,8 +74,7 @@ Quiz.prototype.checkAnswer = function (answer) {
     this.score++; // ++ -> adds 1 point if selected choice is correct
   }
   this.currentQuestion++; // get ready for next question
-};
-// check if quiz end is reached
+}; // checks if quiz end is reached
 Quiz.prototype.reachesEnd = function () {
   // returns true only after last question
   return this.currentQuestion >= this.questions.length;
@@ -83,7 +85,7 @@ const QuizGame = {
   populateIdWithHTML: function (id, content) {
     const element = document.getElementById(id); // gets element from html by its specific id
     element.innerHTML = content; //fills in the element html with the content
-  },
+  }, //populate = adding record to a database
   showNextQuestion: function () {
     if (quiz.reachesEnd()) {
       this.showResults();
