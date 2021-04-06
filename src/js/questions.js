@@ -1,3 +1,17 @@
+// DEFINING QUESTION CONSTRUCTOR FUNCTION
+function Question(text, choices, answer) {
+  //property definitions
+  this.text = text; // "string"
+  this.choices = choices; // [array]
+  this.answer = answer; // "string"
+} //this. is used for property and method definitions with constructor functions
+Question.prototype.isCorrect = function (
+  choice //first method definition
+) {
+  return this.answer === choice;
+}; // returns true if the choice matches the correct answer
+
+// CREATING QUESTIONS
 const questions = [
   new Question(
     "Which girls sports team is the most iconic?",
@@ -43,18 +57,5 @@ const questions = [
     "All of the Above"
   ),
 ];
-
-// DEFINING QUESTION CONSTRUCTOR FUNCTION
-function Question(text, choices, answer) {
-  //property definitions
-  this.text = text; // "string"
-  this.choices = choices; // [array]
-  this.answer = answer; // "string"
-} //this. is used for property and method definitions with constructor functions
-Question.prototype.isCorrect = function (
-  choice //first method definition
-) {
-  return this.answer === choice;
-}; // returns true if the choice matches the correct answer
 
 export { questions };
