@@ -57,3 +57,5 @@ const questions = [
     "All of the Above"
   ),
 ];
+
+export { questions };
