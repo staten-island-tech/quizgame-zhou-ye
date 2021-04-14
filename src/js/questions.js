@@ -1,17 +1,17 @@
 // DEFINING QUESTION CONSTRUCTOR FUNCTION
+///object constructor functions are like a blueprint to create multiple "object types" (objects of the same type) --> creating questions of the same type
 function Question(text, choices, answer) {
   //property definitions
   this.text = text; // "string"
   this.choices = choices; // [array]
   this.answer = answer; // "string"
-} //this. is used for property and method definitions with constructor functions
-Question.prototype.isCorrect = function (
-  choice //first method definition
-) {
+} //this. (keyword) is used for property and method definitions with constructor functions; for constructor functions ".this" is a substitute for a new object (becomes the new object when the new object is created)
+Question.prototype.isCorrect = function (choice) {
+  //first method definition added to constructor function; adding methods to an object contructor must be done inside the constructor function
   return this.answer === choice;
 }; // returns true if the choice matches the correct answer
 
-// CREATING QUESTIONS
+// MAKE QUESTIONS (creating 5 object instances)
 const questions = [
   new Question(
     "Which girls sports team is the most iconic?",

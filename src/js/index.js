@@ -5,12 +5,12 @@ function Quiz(questions) {
   // array of questions
   this.questions = questions;
   // tracks which question you're on, starting with the first question
-  this.currentQuestion = 0; //first question has a question index of 0
+  this.currentQuestion = 0; //before first question, there is a question index of 0
   this.score = 0; // score keeper
 }
 Quiz.prototype.getCurrentQuestion = function () {
   return this.questions[this.currentQuestion];
-};
+}; // ??
 Quiz.prototype.checkAnswer = function (answer) {
   if (this.getCurrentQuestion().isCorrect(answer)) {
     this.score++; // ++ -> adds 1 point if selected choice is correct
