@@ -10,7 +10,7 @@ function Quiz(questions) {
 }
 Quiz.prototype.getCurrentQuestion = function () {
   return this.questions[this.currentQuestion];
-}; // ??
+}; // used for indexing the questions array (array found in other js file)--looks up element in a certain array position and return it
 Quiz.prototype.checkAnswer = function (answer) {
   if (this.getCurrentQuestion().isCorrect(answer)) {
     this.score++; // ++ -> adds 1 point if selected choice is correct
@@ -40,16 +40,17 @@ const QuizGame = {
   }, // if the quiz has ended (question index >= length of questions), then show the results --> otherwise, continue displaying questions
   showQuestion: function () {
     this.populateIdWithHTML("question", quiz.getCurrentQuestion().text);
-  }, //display question: uses text string (from question) to fill in the element with the id "question" in the html file
+  }, //display question: uses text string (from current question) to fill in the element with the id "question" in the html file
   showChoices: function () {
     let choices = quiz.getCurrentQuestion().choices;
     // loop through each choice and display on page
-    choices.forEach((choice) => {
+    choices.forEach((choices) => {
       let choiceId = "choice" + x; //refers to html ids: "choice0", "choice1", etc
       let choiceText = choices[x]; //connects choice text to its number
       this.populateIdWithHTML(choiceId, choiceText);
       this.checkAnswer(choiceId, choiceText);
     });
+    console.log(choices);
   }, //use let because it is a variable that changes depending on what choices the user picks
   checkAnswer: function (id, guess) {
     const button = document.getElementById(id); //goes to html and grabs elements with the id of button
