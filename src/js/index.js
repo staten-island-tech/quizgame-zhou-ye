@@ -44,13 +44,13 @@ const QuizGame = {
   showChoices: function () {
     let choices = quiz.getCurrentQuestion().choices;
     // loop through each choice and display on page
-    choices.forEach((choices) => {
-      let choiceId = "choice" + x; //refers to html ids: "choice0", "choice1", etc
-      let choiceText = choices[x]; //connects choice text to its number
-      this.populateIdWithHTML(choiceId, choiceText);
-      this.checkAnswer(choiceId, choiceText);
+    choices.forEach((choice) => {
+      console.log(choice);
+      //let choiceId = "choice" + x; //refers to html ids: "choice0", "choice1", etc
+      //let choiceText = choices[x]; //connects choice text to its number
+      //this.populateIdWithHTML(choiceId, choiceText);
+      //this.checkAnswer(choiceId, choiceText);
     });
-    console.log(choices);
   }, //use let because it is a variable that changes depending on what choices the user picks
   checkAnswer: function (id, guess) {
     const button = document.getElementById(id); //goes to html and grabs elements with the id of button
